@@ -5,7 +5,7 @@ set -euo pipefail
 function terraform_destroy() {
   local cwd="$1"
   cd "${cwd}"
-  cd terraform
+  cd infra
 
   terraform destroy --auto-approve
 }

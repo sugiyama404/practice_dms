@@ -5,7 +5,7 @@ set -euo pipefail
 function terraform_apply() {
   local cwd="$1"
   cd "${cwd}"
-  cd terraform
+  cd infra
 
   terraform init
   terraform plan

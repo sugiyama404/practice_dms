@@ -1,14 +1,14 @@
-resource "aws_db_instance" "db-setting" {
+resource "aws_db_instance" "surce-db" {
   engine         = "mysql"
-  engine_version = "8.0.31"
+  engine_version = "8.0.35"
 
-  identifier = "db-mysql"
+  identifier = "surce-db"
 
   db_name  = var.db_name
   username = var.db_username
   password = var.db_password
 
-  instance_class = "db.t2.micro"
+  instance_class = "db.t3.micro"
 
   allocated_storage     = 20
   max_allocated_storage = 50
@@ -36,6 +36,6 @@ resource "aws_db_instance" "db-setting" {
   apply_immediately = true
 
   tags = {
-    Name = "${var.app_name}-db-standalone"
+    Name = "${var.app_name}-surce-db"
   }
 }
