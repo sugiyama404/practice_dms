@@ -26,6 +26,15 @@ resource "aws_security_group_rule" "opmng_out_https" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+resource "aws_security_group_rule" "opmng_out_db" {
+  security_group_id = aws_security_group.opmng_sg.id
+  type              = "egress"
+  protocol          = "tcp"
+  from_port         = 3306
+  to_port           = 3306
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
 # SecurityGroupRules for db
 resource "aws_security_group_rule" "dbsource_in_tcp3306" {
   type                     = "ingress"
