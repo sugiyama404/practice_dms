@@ -37,13 +37,3 @@ module "rds" {
   db_password  = var.db_password
 }
 
-# bash
-# module "bash" {
-#   source           = "./modules/bash"
-#   sorce_db_id      = module.rds.sorce_db_id
-#   sorce_db_address = module.rds.sorce_db_address
-#   db_ports         = var.db_ports
-#   db_name          = var.db_name
-#   db_username      = var.db_username
-#   db_password      = var.db_password
-# }
