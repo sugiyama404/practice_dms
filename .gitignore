@@ -70,5 +70,7 @@ override.tf.json
 terraform.rc
 
 memo.txt
+*.pem
+*.pub
 
 # End of https://www.toptal.com/developers/gitignore/api/terraform,macos
