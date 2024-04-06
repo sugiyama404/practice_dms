@@ -16,7 +16,46 @@ resource "aws_instance" "opmng_server" {
     var.sg_opmng_id
   ]
   key_name  = aws_key_pair.keypair.key_name
-  user_data = file("./modules/ec2/src/initialize.sh")
+  user_data = <<EOF
+#!/bin/bash
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+sudo yum update -y
+sudo yum install -y https://dev.mysql.com/get/mysql80-community-release-el8-9.noarch.rpm
+sudo yum install -y yum-utils
+sudo yum-config-manager --disable mysql80-community
+sudo yum-config-manager --enable mysql57-community
+sudo yum install -y mysql-community-client
+sudo yum install mysql -y
+
+sleep 700
+
+mysql -h${var.sorce_db_address} \
+  -D${var.db_name} \
+  -u${var.db_username} \
+  -p${var.db_password} \
+  -e "
+CREATE TABLE IF NOT EXISTS users (
+id INT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(255) DEFAULT NULL,
+email VARCHAR(255) DEFAULT NULL,
+password VARCHAR(255) DEFAULT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);"
+
+mysql -h${var.sorce_db_address} \
+  -D${var.db_name} \
+  -u${var.db_username} \
+  -p${var.db_password} \
+  -e "
+INSERT INTO users (username, email, password) VALUES
+('alice', 'alice@example.com', 'password123'),
+('bob', 'bob@example.com', 'password456'),
+('charlie', 'charlie@example.com', 'password789'),
+('david', 'david@example.com', 'password012'),
+('eve', 'eve@example.com', 'password345');
+"
+EOF
 
   tags = {
     Name = "${var.app_name}-opmng-ec2"

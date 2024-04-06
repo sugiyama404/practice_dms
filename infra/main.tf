@@ -43,4 +43,8 @@ module "ec2" {
   app_name                   = var.app_name
   sg_opmng_id                = module.network.sg_opmng_id
   subnet_public_subnet_1a_id = module.network.subnet_public_subnet_1a_id
+  sorce_db_address           = module.rds.sorce_db_address
+  db_username                = var.db_username
+  db_name                    = var.db_name
+  db_password                = var.db_password
 }

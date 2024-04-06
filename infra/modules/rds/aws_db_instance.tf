@@ -1,4 +1,4 @@
-resource "aws_db_instance" "surce-db" {
+resource "aws_db_instance" "source-db" {
   engine         = "mysql"
   engine_version = "8.0.35"
 
@@ -36,6 +36,6 @@ resource "aws_db_instance" "surce-db" {
   apply_immediately = true
 
   tags = {
-    Name = "${var.app_name}-surce-db"
+    Name = "${var.app_name}-source-db"
   }
 }
