@@ -2,7 +2,7 @@ resource "aws_db_instance" "source-db" {
   engine         = "mysql"
   engine_version = "8.0.35"
 
-  identifier = "surce-db"
+  identifier = "source-db"
 
   db_name  = var.db_name
   username = var.db_username
