@@ -13,10 +13,10 @@ provider "aws" {
 }
 
 # IAM
-module "iam" {
-  source   = "./modules/iam"
-  app_name = var.app_name
-}
+# module "iam" {
+#   source   = "./modules/iam"
+#   app_name = var.app_name
+# }
 
 # network
 module "network" {
@@ -27,14 +27,15 @@ module "network" {
 
 # rds
 module "rds" {
-  source      = "./modules/rds"
-  db_sbg_name = module.network.db_sbg_name
-  sg_rds_id   = module.network.sg_rds_id
-  db_ports    = var.db_ports
-  app_name    = var.app_name
-  db_name     = var.db_name
-  db_username = var.db_username
-  db_password = var.db_password
+  source           = "./modules/rds"
+  db_sbg_name      = module.network.db_sbg_name
+  sg_rds_source_id = module.network.sg_rds_source_id
+  sg_rds_target_id = module.network.sg_rds_target_id
+  db_ports         = var.db_ports
+  app_name         = var.app_name
+  db_name          = var.db_name
+  db_username      = var.db_username
+  db_password      = var.db_password
 }
 
 # opmng
@@ -47,4 +48,17 @@ module "ec2" {
   db_username                = var.db_username
   db_name                    = var.db_name
   db_password                = var.db_password
+}
+
+# dms
+module "dms" {
+  source            = "./modules/dms"
+  app_name          = var.app_name
+  region            = var.region
+  sg_dms_id         = module.network.sg_dms_id
+  db_name           = var.db_name
+  db_username       = var.db_username
+  db_password       = var.db_password
+  sorce_db_address  = module.rds.sorce_db_address
+  target_db_address = module.rds.target_db_address
 }
