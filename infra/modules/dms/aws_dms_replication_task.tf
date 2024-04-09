@@ -1,4 +1,4 @@
-resource "aws_dms_replication_task" "test" {
+resource "aws_dms_replication_task" "main" {
   replication_task_id      = "replication-main-task"
   target_endpoint_arn      = aws_dms_endpoint.target_endpoint.endpoint_arn
   source_endpoint_arn      = aws_dms_endpoint.source_endpoint.endpoint_arn

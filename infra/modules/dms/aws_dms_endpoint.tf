@@ -6,8 +6,8 @@ resource "aws_dms_endpoint" "source_endpoint" {
 
   username      = var.db_username
   password      = var.db_password
-  port          = 3306
-  server_name   = var.sorce_db_address # Host name of the server.
+  port          = var.db_ports
+  server_name   = var.sorce_db_address
   database_name = var.db_name
 
   tags = {
@@ -24,7 +24,7 @@ resource "aws_dms_endpoint" "target_endpoint" {
   username      = var.db_username
   password      = var.db_password
   port          = 3306
-  server_name   = var.target_db_address # Host name of the server.
+  server_name   = var.target_db_address
   database_name = var.db_name
 
   tags = {

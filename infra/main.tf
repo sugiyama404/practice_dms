@@ -13,10 +13,10 @@ provider "aws" {
 }
 
 # IAM
-# module "iam" {
-#   source   = "./modules/iam"
-#   app_name = var.app_name
-# }
+module "iam" {
+  source   = "./modules/iam"
+  app_name = var.app_name
+}
 
 # network
 module "network" {
@@ -52,13 +52,17 @@ module "ec2" {
 
 # dms
 module "dms" {
-  source            = "./modules/dms"
-  app_name          = var.app_name
-  region            = var.region
-  sg_dms_id         = module.network.sg_dms_id
-  db_name           = var.db_name
-  db_username       = var.db_username
-  db_password       = var.db_password
-  sorce_db_address  = module.rds.sorce_db_address
-  target_db_address = module.rds.target_db_address
+  source                                = "./modules/dms"
+  app_name                              = var.app_name
+  region                                = var.region
+  sg_dms_id                             = module.network.sg_dms_id
+  db_name                               = var.db_name
+  db_ports                              = var.db_ports
+  db_username                           = var.db_username
+  db_password                           = var.db_password
+  sorce_db_address                      = module.rds.sorce_db_address
+  target_db_address                     = module.rds.target_db_address
+  subnet_private_subnet_1a_id           = module.network.subnet_private_subnet_1a_id
+  subnet_private_subnet_1c_id           = module.network.subnet_private_subnet_1c_id
+  iam_role_policy_attachment_dms_policy = module.iam.iam_role_policy_attachment_dms_policy
 }
