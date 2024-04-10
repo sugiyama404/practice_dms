@@ -58,8 +58,8 @@ bin/terraform_destroy
 本番環境で使用する場合は、セキュリティ要件を満たすように設定してください。
 
 # 参考資料
-+ AWS DMS ドキュメント: https://docs.aws.amazon.com/dms/latest/userguide/
-+ Terraform ドキュメント: https://www.terraform.io/docs/
++ AWS DMS ドキュメント: [AWS DMS ドキュメント](https://docs.aws.amazon.com/dms/latest/userguide/)
++ Terraform ドキュメント: [Terraform ドキュメント](https://www.terraform.io/docs/)
 
 # 免責事項
 このプロジェクトは、いかなる保証もなしに提供されます。著者は、このプロジェクトの使用によって生じた損害について一切の責任を負いません。
