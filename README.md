@@ -51,7 +51,7 @@ bin/terraform_destroy
 
 技術詳細はQiitaに記載しています。
 
-https://qiita.com/sugiyama404/items/fc7a0b05c04f90a159c5
+[Terraform、AWS DMSによるデータベース移行](https://qiita.com/sugiyama404/items/fc7a0b05c04f90a159c5)
 
 # 注意事項
 このプロジェクトは、テスト目的でのみ使用してください。
