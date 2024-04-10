@@ -1,5 +1,5 @@
 resource "aws_iam_role" "main_role" {
-  name = "${var.app_name}_role"
+  name = "dms-vpc-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -9,8 +9,9 @@ resource "aws_iam_role" "main_role" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          Service = "ecs-tasks.amazonaws.com"
+          Service = "dms.amazonaws.com"
         }
+        Action = "sts:AssumeRole"
       },
     ]
   })

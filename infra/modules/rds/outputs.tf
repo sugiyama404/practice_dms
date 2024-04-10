@@ -9,3 +9,7 @@ output "sorce_db_id" {
 output "sorce_db_address" {
   value = split(":", "${aws_db_instance.source-db.address}")[0]
 }
+
+output "target_db_address" {
+  value = split(":", "${aws_db_instance.target-db.address}")[0]
+}

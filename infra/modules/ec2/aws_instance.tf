@@ -1,6 +1,6 @@
 resource "aws_key_pair" "keypair" {
   key_name   = "${var.app_name}-keypair"
-  public_key = file("./modules/ec2/src/keypair.pub")
+  public_key = file("./modules/ec2/src/todolist-keypair.pub")
 
   tags = {
     Name = "${var.app_name}-keypair"
@@ -28,6 +28,28 @@ sudo yum install -y mysql-community-client
 sudo yum install mysql -y
 
 sleep 700
+
+function connect_mysql() {
+  local result
+  result=$(mysql -h${var.sorce_db_address} \
+  -D${var.db_name} \
+  -u${var.db_username} \
+  -p${var.db_password} \
+  -e "quit" &>/dev/null)
+  if [ $? -ne 0 ]; then
+    echo "接続に失敗しました。" >&2
+    exit 1
+  fi
+  return 0
+}
+
+for i in $(seq 1 200); do
+  if connect_mysql; then
+    break
+  else
+    sleep 30
+  fi
+done
 
 mysql -h${var.sorce_db_address} \
   -D${var.db_name} \

@@ -1,0 +1,14 @@
+variable "app_name" {}
+variable "region" {}
+variable "sg_dms_id" {}
+variable "db_name" {}
+variable "db_username" {}
+variable "db_password" {}
+variable "db_ports" {}
+variable "sorce_db_address" {}
+variable "target_db_address" {}
+variable "subnet_public_subnet_1a_id" {}
+variable "subnet_public_subnet_1c_id" {}
+variable "subnet_private_subnet_1a_id" {}
+variable "subnet_private_subnet_1c_id" {}
+variable "iam_role_policy_attachment_dms_policy" {}
