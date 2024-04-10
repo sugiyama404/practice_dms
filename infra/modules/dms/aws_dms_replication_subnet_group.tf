@@ -1,4 +1,3 @@
-# Create a new replication subnet group
 resource "aws_dms_replication_subnet_group" "main" {
   replication_subnet_group_description = "replication subnet group"
   replication_subnet_group_id          = "dms-replication-subnet-group"

@@ -1,4 +1,3 @@
-# Create a new replication instance
 resource "aws_dms_replication_instance" "main" {
   replication_instance_id    = "main-dms-replication"
   engine_version             = "3.5.1"
