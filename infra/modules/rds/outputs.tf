@@ -1,7 +1,3 @@
-# output "sorce_db_endpoint" {
-#   value = aws_db_instance.source-db.endpoint
-# }
-
 output "sorce_db_id" {
   value = aws_db_instance.source-db.id
 }
