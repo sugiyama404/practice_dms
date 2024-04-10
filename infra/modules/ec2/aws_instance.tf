@@ -27,7 +27,7 @@ sudo yum-config-manager --enable mysql57-community
 sudo yum install -y mysql-community-client
 sudo yum install mysql -y
 
-sleep 700
+sleep 500
 
 function connect_mysql() {
   local result
