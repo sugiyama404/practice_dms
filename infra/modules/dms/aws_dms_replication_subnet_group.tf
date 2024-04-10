@@ -6,6 +6,10 @@ resource "aws_dms_replication_subnet_group" "main" {
     "${var.subnet_private_subnet_1a_id}",
     "${var.subnet_private_subnet_1c_id}",
   ]
+  # subnet_ids = [
+  #   "${var.subnet_public_subnet_1a_id}",
+  #   "${var.subnet_public_subnet_1c_id}",
+  # ]
 
   tags = {
     Name = "${var.app_name}-main"

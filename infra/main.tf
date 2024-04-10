@@ -62,6 +62,8 @@ module "dms" {
   db_password                           = var.db_password
   sorce_db_address                      = module.rds.sorce_db_address
   target_db_address                     = module.rds.target_db_address
+  subnet_public_subnet_1a_id            = module.network.subnet_public_subnet_1a_id
+  subnet_public_subnet_1c_id            = module.network.subnet_public_subnet_1c_id
   subnet_private_subnet_1a_id           = module.network.subnet_private_subnet_1a_id
   subnet_private_subnet_1c_id           = module.network.subnet_private_subnet_1c_id
   iam_role_policy_attachment_dms_policy = module.iam.iam_role_policy_attachment_dms_policy

@@ -6,7 +6,7 @@ resource "aws_dms_endpoint" "source_endpoint" {
 
   username      = var.db_username
   password      = var.db_password
-  port          = var.db_ports
+  port          = 3306
   server_name   = var.sorce_db_address
   database_name = var.db_name
 
